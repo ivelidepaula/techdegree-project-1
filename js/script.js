@@ -9,7 +9,7 @@ One has an 'year' property and another has 'year' and 'citation' property.
 ***/
 
 
-var quotes[
+var quotes = [
   {
     quote:"If you don’t actively attack the risks, the risks will actively attack you.",
     source:"Tom Gilb",
@@ -32,25 +32,18 @@ var quotes[
   {
     quote:"First do it, then do it right, then do it better.",
     source:"Addy Osmani"
-  }
+  },
   {
     quote:"Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity.",
     source:"Aaron Swartz"
   }
 ];
 
-//Assigned the length (total number of quotes) from the 'quotes' array to a new variable.
-quotes.length;
-var numberQuotes = quotes.length;
-
 //This function finds a random number that is used to find an object from a random postion.
 
-function getRandomQuote() {
-  var randomNumber = Math.floor(Math.random()*numberQuotes + 1);
-  for (var i =0; i<quotes.length; i +=1) {
-    return(quotes[randomNumber]);
-  }
-
+function getRandomQuote(quotes) {
+  var randomNumber = Math.floor(Math.random()* quotes.length);
+  return quotes[randomNumber];
 }
 
 /***
@@ -66,11 +59,11 @@ function printQuote() {
   var htmlString = '<div class="container"><div id="quote-box"><p class="quote">' + 'randomQuote[0]' + '</p>';
   //The second paragraph has the source, citation and year properties. The 'if' conditional add those properties to the paragraph.
   if ('citation' in randomQuote || 'year' in randomQuote) {
-    var htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
+    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
   } else if ('citation' in randomQuote){
-    var htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
+    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
   } else if ('year' in randomQuote) {
-    var htmlString += '<p class="source">' + randomQuote.source + '<span class="year">' +randomQuote.year + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
+    htmlString += '<p class="source">' + randomQuote.source + '<span class="year">' + randomQuote.year + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
   } else {
     '<p class="source">' + randomQuote.source + '</p></div><button id="loadQuote">Show another quote</button></div>';
   }
