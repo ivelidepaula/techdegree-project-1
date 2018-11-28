@@ -56,16 +56,16 @@ The following function:
 function printQuote() {
   var randomQuote = getRandomQuote(quotes);
   //The next variable stores the first paragraph with the random quote.
-  var htmlString = '<div class="container"><div id="quote-box"><p class="quote">' + 'randomQuote[0]' + '</p>';
+  var htmlString = '<p class="quote">' + 'randomQuote[0]' + '</p>';
   //The second paragraph has the source, citation and year properties. The 'if' conditional add those properties to the paragraph.
   if ('citation' in randomQuote || 'year' in randomQuote) {
-    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
+    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p>';
   } else if ('citation' in randomQuote){
-    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
+    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span></p>';
   } else if ('year' in randomQuote) {
-    htmlString += '<p class="source">' + randomQuote.source + '<span class="year">' + randomQuote.year + '</span></p></div><button id="loadQuote">Show another quote</button></div>';
+    htmlString += '<p class="source">' + randomQuote.source + '<span class="year">' + randomQuote.year + '</span></p>';
   } else {
-    '<p class="source">' + randomQuote.source + '</p></div><button id="loadQuote">Show another quote</button></div>';
+    '<p class="source">' + randomQuote.source + '</p>';
   }
 
   document.getElementById('quote-box').innerHTML = htmlString;
