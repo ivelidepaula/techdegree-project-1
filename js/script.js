@@ -26,7 +26,7 @@ var quotes = [
     citation:"Twitter"
   },
   {
-    quote:"If Life gives you lemons make some kind of fruity juice.",
+    quote:"If life gives you lemons make some kind of fruity juice.",
     source:"Conan O'Brien"
   },
   {
@@ -59,7 +59,7 @@ function printQuote() {
   var htmlString = '';
   htmlString += '<p class="quote">' + randomQuote.quote + '</p>';
   //The second paragraph has the source, citation and year properties. The 'if' conditional add those properties to the paragraph.
-  if ('citation' in randomQuote || 'year' in randomQuote) {
+  if ('citation' in randomQuote && 'year' in randomQuote) {
     htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p>';
   } else if ('citation' in randomQuote){
     htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span></p>';
