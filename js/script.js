@@ -71,6 +71,10 @@ function printQuote() {
   document.getElementById('quote-box').innerHTML = htmlString;
 }
 
+var buttonClick = document.getElementById('loadQuote').addEventListener("click", function(){
+    printQuote();
+  };
+
 /***
   When the "Show another quote" button is clicked, the event listener
   below will be triggered, and it will call, or "invoke", the `printQuote`
