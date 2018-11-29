@@ -66,7 +66,7 @@ function printQuote() {
   if ('year' in randomQuote) {
     htmlString += '<span class="year">' + randomQuote.year + '</span>';
   }
-  htmlString += '</p>'
+  htmlString += '</p>';
 
   //This calls a function that changes the background color.
   changeColor();
