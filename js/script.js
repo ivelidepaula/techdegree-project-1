@@ -3,11 +3,11 @@ Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 ******************************************/
 
-/***
-Created an array named 'quotes' with 6 different quote objects. Each one has at least a 'quote' and a 'source' property.
-One has an 'year' property and another has 'year' and 'citation' property.
-***/
+var htmlString;
+var timeout;
 
+//Array named 'quotes' with 6 different quote objects. Each one has at least a 'quote' and a 'source' property.
+//Some of them also have an 'year' and 'citation' property.
 
 var quotes = [
   {
@@ -39,7 +39,7 @@ var quotes = [
   }
 ];
 
-//This function finds a random number that is used to find an object from a random postion.
+//This function stores a random number in a variable. It is used to find an object from a random postion.
 
 function getRandomQuote(quotes) {
   var randomNumber = Math.floor(Math.random()* quotes.length);
@@ -56,7 +56,8 @@ The following function:
 function printQuote() {
   var randomQuote = getRandomQuote(quotes);
   //The next variable stores the first paragraph with the random quote.
-  var htmlString = '<p class="quote">' + 'randomQuote[0]' + '</p>';
+  var htmlString = '';
+  htmlString += '<p class="quote">' + 'randomQuote[0]' + '</p>';
   //The second paragraph has the source, citation and year properties. The 'if' conditional add those properties to the paragraph.
   if ('citation' in randomQuote || 'year' in randomQuote) {
     htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p>';
@@ -68,12 +69,35 @@ function printQuote() {
     '<p class="source">' + randomQuote.source + '</p>';
   }
 
+  //This calls a function that changes the background color.
+  changeColor();
+
+  //This prints the quote to the page
   document.getElementById('quote-box').innerHTML = htmlString;
+
+  //This calls a function that changes the quote after 30 seconds
+  timeout = setTimeout(printQuote, 30000);
 }
 
-var buttonClick = document.getElementById('loadQuote').addEventListener("click", function(){
-    printQuote();
-  };
+function changeColor(){
+  var hexArray = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+  var hexCode = '#';
+  var randomValue;
+
+  for (var i = 0; i < 6; i += 1) {
+    randomValue = getRandomQuote(hexArray);
+    hexCode += randomValue;
+  }
+
+  document.body.style.backgroundColor = hexCode;
+}
+
+printQuote();
+
+function resetTimeout(){
+  clearTimeout(timeout);
+}
+
 
 /***
   When the "Show another quote" button is clicked, the event listener
@@ -81,4 +105,7 @@ var buttonClick = document.getElementById('loadQuote').addEventListener("click",
   function.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", function(){
+  resetTimeout();
+  printQuote();
+}, false);
