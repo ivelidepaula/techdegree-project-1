@@ -59,15 +59,14 @@ function printQuote() {
   var htmlString = '';
   htmlString += '<p class="quote">' + randomQuote.quote + '</p>';
   //The second paragraph has the source, citation and year properties. The 'if' conditional add those properties to the paragraph.
-  if ('citation' in randomQuote && 'year' in randomQuote) {
-    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p>';
-  } else if ('citation' in randomQuote){
-    htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span></p>';
-  } else if ('year' in randomQuote) {
-    htmlString += '<p class="source">' + randomQuote.source + '<span class="year">' + randomQuote.year + '</span></p>';
-  } else {
-    '<p class="source">' + randomQuote.source + '</p>';
+  htmlString += '<p class="source">' + randomQuote.source;
+  if ('citation' in randomQuote) {
+    htmlString += '<span class="citation">' + randomQuote.citation + '</span>';
   }
+  if ('year' in randomQuote) {
+    htmlString += '<span class="year">' + randomQuote.year + '</span>';
+  }
+  htmlString += '</p>'
 
   //This calls a function that changes the background color.
   changeColor();
