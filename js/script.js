@@ -57,7 +57,7 @@ function printQuote() {
   var randomQuote = getRandomQuote(quotes);
   //The next variable stores the first paragraph with the random quote.
   var htmlString = '';
-  htmlString += '<p class="quote">' + 'randomQuote[0]' + '</p>';
+  htmlString += '<p class="quote">' + randomQuote.quote + '</p>';
   //The second paragraph has the source, citation and year properties. The 'if' conditional add those properties to the paragraph.
   if ('citation' in randomQuote || 'year' in randomQuote) {
     htmlString += '<p class="source">' + randomQuote.source + '<span class="citation">' + randomQuote.citation + '</span><span class="year">' + randomQuote.year + '</span></p>';
